@@ -2,15 +2,22 @@ class RingBuffer:
     def __init__(self, capacity):
         self.capacity = capacity
         self.storage = []
-        self.oldest_item = 0
+        self.oldest_index = 0
 
     def append(self, item):
-        if(len(self.storage) == self.capacity):
-            self.storage[self.oldest_item] = item
-            if(self.oldest_item < self.capacity - 1):
-                self.oldest_item += 1
+
+        # checking if there is room in ringbuffer, if there is room then append item
+        if len(self.storage) < self.capacity:
+            self.storage.append(item)
+        # else --> there is no room for new item then replace the old itm with old index
+        else:
+            self.storage[self.oldest_index] = item
+            
+            # now updating the oldest_index. now oldest_index is the index next to the original index
+            if self.oldest_index < self.capacity - 1:
+                self.oldest_index += 1
             else:
-                self.oldest_item = 0
+                self.oldest_index = 0
 
     def get(self):
         return self.storage

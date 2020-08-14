@@ -23,9 +23,11 @@ duplicates = []  # Return the list of duplicates in this data structure
 
 # Solution 2
 # Using binary search tree
-from binary_search_tree import BSTNode
+from binary_search_tree import BinarySearchTree
 
-bst = BSTNode(names_1[0])
+# passing name_1 
+bst = BinarySearchTree(names_1[0])
+print(bst.value)
 
 for name1 in names_1:
     bst.insert(name1)

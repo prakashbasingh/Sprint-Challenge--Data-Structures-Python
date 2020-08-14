@@ -23,15 +23,15 @@ class RingBuffer:
         return self.storage
     
     
-# buffer = RingBuffer(3)
+buffer = RingBuffer(3)
 
-# buffer.get()   # should return []
+buffer.get()   # should return []
 
-# buffer.append('a')
-# buffer.append('b')
-# buffer.append('c')
+buffer.append('a')
+buffer.append('b')
+buffer.append('c')
 
-# buffer.get()   # should return ['a', 'b', 'c']
+buffer.get()   # should return ['a', 'b', 'c']
 
 # # 'd' overwrites the oldest value in the ring buffer, which is 'a'
 # buffer.append('d')

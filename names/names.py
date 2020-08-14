@@ -12,11 +12,28 @@ f.close()
 
 duplicates = []  # Return the list of duplicates in this data structure
 
-# Replace the nested for loops below with your improvements
-for name_1 in names_1:
-    for name_2 in names_2:
-        if name_1 == name_2:
-            duplicates.append(name_1)
+# # Replace the nested for loops below with your improvements
+# for name_1 in names_1:
+#     for name_2 in names_2:
+#         if name_1 == name_2:
+#             duplicates.append(name_1)
+
+# Solution 1            
+# duplicates = [n for n in names_1 if n in names_2]
+
+# Solution 2
+# Using binary search tree
+from binary_search_tree import BSTNode
+
+bst = BSTNode(names_1[0])
+
+for name1 in names_1:
+    bst.insert(name1)
+    
+for name2 in names_2:
+    if bst.contains(name2):
+        duplicates.append(name2)
+
 
 end_time = time.time()
 print (f"{len(duplicates)} duplicates:\n\n{', '.join(duplicates)}\n\n")
